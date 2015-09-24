@@ -1,0 +1,289 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mysql复习 | 慕微瀾</title>
+  <meta name="author" content="Yidenger">
+  
+  <meta name="description" content="This is Yidenger&#39;s blog.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Mysql复习"/>
+  <meta property="og:site_name" content="慕微瀾"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="慕微瀾" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="/js/jquery.min.js"></script>
+  
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45019001-1', 'topdna.org');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+
+<body>
+  <!--[if lte IE 8]> <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'> <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0027_Simplified Chinese.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." style='margin-left:auto;margin-right:auto;display: block;'/></a></div> <![endif]-->
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">慕微瀾</a></h1>
+  <h2><a href="/">不积跬步何以至千里</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/categories/essay/">随感</a></li>
+    
+      <li><a href="/categories/tech/">技术</a></li>
+    
+      <li><a href="/categories/investment/">理财</a></li>
+    
+      <li><a href="/categories/life/">生活</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <time datetime="2015-09-24T08:35:52.000Z"><a href="/2015/09/24/mysql-review/">2015-09-24</a></time>
+      
+      
+  
+    <h1 class="title">Mysql复习</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>所谓温故而知新，好记性比不过烂笔头，所以复习是很有必要的。</p>
+<h4 id="Mysql登录"><strong>Mysql登录</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root -p -P <span class="number">3306</span> -h <span class="number">192.168</span>.<span class="number">0.251</span> -D</span><br></pre></td></tr></table></figure>
+<p>u表示用户名，小写p表示密码，大写P表示端口号，h表示服务器（即IP），大写D表示数据库</p>
+<a id="more"></a>
+<h4 id="创建数据库"><strong>创建数据库</strong></h4><pre><code><span class="operator"><span class="keyword">create</span> <span class="keyword">database</span> test1;</span> <span class="comment">-- 创建数据库test1；</span>
+</code></pre><h4 id="修改数据库字符编码"><strong>修改数据库字符编码</strong></h4><pre><code><span class="operator"><span class="keyword">alter</span> <span class="keyword">database</span> test1 <span class="built_in">character</span> <span class="keyword">set</span> = utf8;</span>
+</code></pre><h4 id="删除数据库"><strong>删除数据库</strong></h4><pre><code><span class="operator"><span class="keyword">drop</span> <span class="keyword">database</span> test1;</span>
+</code></pre><h4 id="创建表"><strong>创建表</strong></h4><pre><code><span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(
+    userId <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment comment <span class="string">'用户id'</span>,
+    username <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="literal">null</span> comment <span class="string">'用户名'</span>,
+    <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">30</span>) <span class="keyword">not</span> <span class="literal">null</span> comment <span class="string">'密码'</span>,
+    loginTime <span class="keyword">timestamp</span> <span class="keyword">not</span> <span class="literal">null</span> <span class="keyword">default</span> <span class="keyword">current_timestamp</span> <span class="keyword">on</span> <span class="keyword">update</span> <span class="keyword">current_timestamp</span> comment <span class="string">'登录时间'</span>,
+    <span class="keyword">primary</span> <span class="keyword">key</span>(userId)
+)comment <span class="string">'用户表'</span>;</span>
+</code></pre><p>查看表结构</p>
+<pre><code><span class="operator"><span class="keyword">show</span> <span class="keyword">columns</span> <span class="keyword">from</span> table_name;</span>
+</code></pre><h4 id="修改数据表"><strong>修改数据表</strong></h4><pre><code><span class="comment">-- 添加列</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">add</span> age tinyint comment <span class="string">'年龄'</span>;</span>
+<span class="comment">-- 修改列的属性</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> modify age <span class="built_in">smallint</span>;</span>
+<span class="comment">-- 修改列名</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">change</span> age ages <span class="built_in">smallint</span>;</span>
+<span class="comment">-- 删除列</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">drop</span> ages;</span>
+</code></pre><h4 id="插入表"><strong>插入表</strong></h4><pre><code><span class="comment">-- 添加用户（往user表中插入数据）</span>
+<span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (username, <span class="string">`password`</span>) <span class="keyword">values</span> (<span class="string">'admin'</span>, <span class="string">'123456'</span>);</span>
+<span class="comment">-- 使用set插入数据</span>
+<span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> <span class="keyword">set</span> username = <span class="string">'people1'</span>, <span class="string">`password`</span> = <span class="string">'567890'</span>;</span>
+<span class="comment">-- 从其他表数据插入</span>
+<span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span> (username, <span class="string">`password`</span>) <span class="keyword">select</span> (username, <span class="string">`password`</span>) <span class="keyword">from</span> user_tmp;</span>
+</code></pre><h4 id="更新表"><strong>更新表</strong></h4><pre><code><span class="comment">-- 修改密码(更新password字段)</span>
+<span class="operator"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> <span class="string">`password`</span> = <span class="string">'66666'</span> <span class="keyword">where</span> userid = <span class="number">2</span>;</span>
+<span class="comment">-- 更新age字段</span>
+<span class="operator"><span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> age = age +<span class="number">1</span>;</span>
+</code></pre><h4 id="删除记录"><strong>删除记录</strong></h4><pre><code><span class="comment">-- 删除用户</span>
+<span class="operator"><span class="keyword">delete</span> <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> userid = <span class="number">2</span>;</span>
+</code></pre><h4 id="**Mysql修改表、字段的字符集、字符序">**Mysql修改表、字段的字符集、字符序</h4><pre><code><span class="comment">-- 修改数据库的字符集</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">database</span> db_name <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> character_name [<span class="keyword">collate</span>...];</span>
+
+<span class="comment">-- 把表默认的字符集合所有字符列（char、varchar、text）改为新的字符集</span>
+<span class="comment">-- 格式：alter table table_name convert to character set character_name [collate...];</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">convert</span> <span class="keyword">to</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8 <span class="keyword">collate</span> utf8_unicode_ci;</span>
+
+<span class="comment">-- 只是修改表的默认字符集</span>
+<span class="comment">-- alter table tb_name default character set character_name [collate...];</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">default</span> <span class="built_in">character</span> <span class="keyword">set</span> utf8 <span class="keyword">collate</span> utf8_unicode_ci;</span>
+
+<span class="comment">-- 修改字段的字符集</span>
+<span class="comment">-- alter table tb_name change c_name c_name character set char_name [collate...];</span>
+<span class="operator"><span class="keyword">alter</span> <span class="keyword">table</span> <span class="keyword">user</span> <span class="keyword">change</span> username username <span class="built_in">character</span> <span class="keyword">set</span> utf8 <span class="keyword">collate</span> utf8_unicode_ci;</span>
+
+<span class="comment">--查看字段编码</span>
+<span class="operator"><span class="keyword">show</span> <span class="keyword">full</span> <span class="keyword">columns</span> <span class="keyword">from</span> <span class="keyword">user</span>;</span>
+<span class="operator"><span class="keyword">show</span> <span class="keyword">variables</span> <span class="keyword">like</span> <span class="string">'%colla%'</span>;</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+
+        
+        
+          <div class="alignright post-nav">
+            <em>下一篇: </em><a href="/2015/09/23/mysql_procedure/">Mysql之存储过程</a>
+          </div>
+          <div class="clearfix"></div>
+        
+
+        
+          <div class="copyright">
+            
+              <span class="claim">版权声明：自由转载-非商用-无演绎-保持署名 @ Creative Commons BY-NC-ND 3.0</span>
+            
+            
+              <span class="from-link">
+                <em>本文链接地址:</em>
+                <a href="/2015/09/24/mysql-review/">
+                  https://github.com/yidenger/yidenger.github.io/2015/09/24/mysql-review/
+                </a>
+              </span>
+            
+          </div>
+        
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Mysql/">Mysql</a>, <a href="/tags/数据库/">数据库</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_sinaweibo_like"></a>
+    
+    
+      <a class="addthis_button_linkedin"></a>
+    
+    
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="text" name="q" results="0" placeholder="搜尋">
+    <i class="icon-search"></i>
+    <input type="hidden" name="q" value="site:github.com/yidenger/yidenger.github.io">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">標籤</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Mysql/">Mysql</a><small>2</small></li>
+  
+    <li><a href="/tags/node-js/">node.js</a><small>1</small></li>
+  
+    <li><a href="/tags/开始/">开始</a><small>1</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>2</small></li>
+  
+    <li><a href="/tags/日记/">日记</a><small>1</small></li>
+  
+    <li><a href="/tags/模块/">模块</a><small>1</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/09/24/mysql-review/">Mysql复习</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/23/mysql_procedure/">Mysql之存储过程</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/28/nodejs/">nodejs模块</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/27/myWebsite/">Hello Github</a>
+      </li>
+    
+  </ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <div id="go-pg-top"><i class="icon-arrow-up"></i></div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2015 Yidenger
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" charset="utf-8" src="/js/page.js"></script>
+
+</body>
+
+</html>
