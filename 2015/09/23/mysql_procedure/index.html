@@ -139,7 +139,11 @@ DELIMITER ;</span>
 <span class="comment">-- 这里说明下delimiter的作用，因为在mysql中，语句执行结束的标志为分号(;)，如要执行多条语句则要另定义结束标志，</span>
 <span class="comment">-- 这里我定义为双斜杠(//),可自行定义，但是要注意配套使用</span>
 <span class="comment">-- 还有一点，注释在mysql中使用(--)来表示，后需要有空格</span>
-</code></pre><div align="center"><br><img src="/images/greenBridge.jpg" alt="绿桥"><br><br></div>
+</code></pre><p>来看个Mysql命令的执行流程图，有助于理解</p>
+<div align="center"><br>    <img src="/images/procedure.png" alt=""><br></div>
+
+<p>简单的概括为，Mysql的语句经过其数据库引擎分析得到将要执行的语句是否正确，然后识别其中的命令,执行语句得到执行结果，最后将结果集返回给客户端。</p>
+<div align="center"><br><img src="/images/greenBridge.jpg" alt="绿桥"><br><br></div>
       
     </div>
     <footer>
